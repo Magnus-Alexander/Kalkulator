@@ -83,6 +83,8 @@ function App() {
     setCount(parts[0]);
     setModifier(parts[1] || "");
     setCount2(parts[2] || "");
+    setModifier2(parts[3] || "");
+    setResult(parts[4] || "");
   }
   function zero() {
     modifier == ""
@@ -177,15 +179,18 @@ function App() {
   }
 
   function equals() {
-    modifier == "+"
+    modifier == "+" && modifier2 != "="
       ? (setModifier2(modifier2 + "="),
         setResult((result = parseInt(count) + parseInt(count2))))
-      : modifier == "-"
-      ? setResult(parseInt(count) - parseInt(count2))
-      : modifier == "x"
-      ? setResult(parseInt(count) * parseInt(count2))
-      : modifier == "/"
-      ? setResult(parseInt(count) / parseInt(count2))
+      : modifier == "-" && modifier2 != "="
+      ? (setModifier2(modifier2 + "="),
+        setResult((result = parseInt(count) - parseInt(count2))))
+      : modifier == "x" && modifier2 != "="
+      ? (setModifier2(modifier2 + "="),
+        setResult((result = parseInt(count) * parseInt(count2))))
+      : modifier == "/" && modifier2 != "="
+      ? (setModifier2(modifier2 + "="),
+        setResult((result = parseInt(count) / parseInt(count2))))
       : console.log(string);
   }
   return (
