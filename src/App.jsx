@@ -89,7 +89,7 @@ function App() {
   function zero() {
     modifier == ""
       ? setCount(count + "0")
-      : modifier != ""
+      : modifier != "" && modifier2 == ""
       ? setCount2(count2 + "0")
       : console.log(string);
   }
@@ -97,7 +97,7 @@ function App() {
   function one() {
     modifier == ""
       ? setCount(count + "1")
-      : modifier != ""
+      : modifier != "" && modifier2 == ""
       ? setCount2(count2 + "1")
       : console.log(string);
   }
@@ -105,7 +105,7 @@ function App() {
   function two() {
     modifier == ""
       ? setCount(count + "2")
-      : modifier != ""
+      : modifier != "" && modifier2 == ""
       ? setCount2(count2 + "2")
       : console.log(string);
   }
@@ -113,7 +113,7 @@ function App() {
   function three() {
     modifier == ""
       ? setCount(count + "3")
-      : modifier != ""
+      : modifier != "" && modifier2 == ""
       ? setCount2(count2 + "3")
       : console.log(string);
   }
@@ -121,7 +121,7 @@ function App() {
   function four() {
     modifier == ""
       ? setCount(count + "4")
-      : modifier != ""
+      : modifier != "" && modifier2 == ""
       ? setCount2(count2 + "4")
       : console.log(string);
   }
@@ -129,7 +129,7 @@ function App() {
   function five() {
     modifier == ""
       ? setCount(count + "5")
-      : modifier != ""
+      : modifier != "" && modifier2 == ""
       ? setCount2(count2 + "5")
       : console.log(string);
   }
@@ -137,7 +137,7 @@ function App() {
   function six() {
     modifier == ""
       ? setCount(count + "6")
-      : modifier != ""
+      : modifier != "" && modifier2 == ""
       ? setCount2(count2 + "6")
       : console.log(string);
   }
@@ -145,7 +145,7 @@ function App() {
   function seven() {
     modifier == ""
       ? setCount(count + "7")
-      : modifier != ""
+      : modifier != "" && modifier2 == ""
       ? setCount2(count2 + "7")
       : console.log(string);
   }
@@ -153,7 +153,7 @@ function App() {
   function eight() {
     modifier == ""
       ? setCount(count + "8")
-      : modifier != ""
+      : modifier != "" && modifier2 == ""
       ? setCount2(count2 + "8")
       : console.log(string);
   }
@@ -161,7 +161,7 @@ function App() {
   function nine() {
     modifier == ""
       ? setCount(count + "9")
-      : modifier != ""
+      : modifier != "" && modifier2 == ""
       ? setCount2(count2 + "9")
       : console.log(string);
   }
@@ -173,7 +173,7 @@ function App() {
     count != "" ? setCommaCount(commaCount + 1) : console.log("");
     commaCount < 1 && count != "" && modifier == ""
       ? setCount(count + ",")
-      : modifier != "" && count2 !== "" && commaCount2 < 1
+      : modifier != "" && count2 !== "" && commaCount2 < 1 && modifier2 == ""
       ? (setCount2(count2 + ","), setCommaCount2(commaCount2 + 1))
       : console.log("too many commas");
   }
