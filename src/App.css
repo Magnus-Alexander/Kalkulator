@@ -15,7 +15,7 @@ body {
 button {
   background-color: #eae3db;
   color: #252d44;
-  box-shadow: 5px;
+  box-shadow: #b3a59a 0px 3px 0px 0px;
   border-radius: 5px;
   border-style: none;
   height: 40px;
@@ -85,15 +85,18 @@ button:active {
 
 .reset {
   background-color: #647298;
+  box-shadow: 0px 3px #414e72;
 }
 
 .equals {
   background-color: #d13f30;
+  box-shadow: 0px 3px #93251a;
 }
 
 .del {
   background-color: #637398;
   color: #fffffd;
+  box-shadow: 0px 3px #414e72;
 }
 
 .space {
