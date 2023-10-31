@@ -1,18 +1,15 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-
 function App() {
   const [count, setCount] = useState("");
   const [modifier, setModifier] = useState("");
-  const [modifier2, setModifier2] = useState("");
   const [count2, setCount2] = useState("");
-  let [result, setResult] = useState("");
+  let [result, setResult] = useState(null);
 
   const [string, setString] = useState("");
   useEffect(() => {
-    setString(count + modifier + count2 + modifier2 + result);
-  }, [count, modifier, count2, modifier2, result]);
-  console.log(`string is: ${string}`);
+    setString(count + modifier + count2);
+  }, [count, modifier, count2]);
 
   const [addCount, setAddCount] = useState(0);
   function add() {
@@ -73,7 +70,6 @@ function App() {
     setCommaCount(0);
     setCommaCount2(0);
     setResult("");
-    setModifier2("");
   }
 
   function del() {
@@ -81,87 +77,87 @@ function App() {
     setString(newString);
     let parts = newString.split(/([+\-x/])/);
     setCount(parts[0]);
-    setModifier(parts[1] || "");
+    setModifier(
+      parts[1] || ("" && setAddCount(0)),
+      setSubCount(0),
+      setMultiCount(0),
+      setDivCount(0)
+    );
     setCount2(parts[2] || "");
-    setModifier2(parts[3] || "");
     setResult(parts[4] || "");
+
+    modifier == "" || result != ""
+      ? (setAddCount(0), setSubCount(0), setMultiCount(0), setDivCount(0))
+      : console.log("");
   }
   function zero() {
-    modifier == ""
+    modifier == "" && string.length < 11 && result == ""
       ? setCount(count + "0")
-      : modifier != "" && modifier2 == ""
+      : modifier != "" && string.length < 11 && result == ""
       ? setCount2(count2 + "0")
       : console.log(string);
+    console.log(string.length + 1);
   }
-
   function one() {
-    modifier == ""
+    modifier == "" && string.length < 11 && result == ""
       ? setCount(count + "1")
-      : modifier != "" && modifier2 == ""
+      : modifier != "" && string.length < 11 && result == ""
       ? setCount2(count2 + "1")
       : console.log(string);
   }
-
   function two() {
-    modifier == ""
+    modifier == "" && string.length < 11 && result == ""
       ? setCount(count + "2")
-      : modifier != "" && modifier2 == ""
+      : modifier != "" && string.length < 11 && result == ""
       ? setCount2(count2 + "2")
       : console.log(string);
   }
-
   function three() {
-    modifier == ""
+    modifier == "" && string.length < 11 && result == ""
       ? setCount(count + "3")
-      : modifier != "" && modifier2 == ""
+      : modifier != "" && string.length < 11 && result == ""
       ? setCount2(count2 + "3")
-      : console.log(string);
+      : console.log(`${"the string is "} ${string}`);
   }
-
   function four() {
-    modifier == ""
+    modifier == "" && string.length < 11 && result == ""
       ? setCount(count + "4")
-      : modifier != "" && modifier2 == ""
+      : modifier != "" && string.length < 11 && result == ""
       ? setCount2(count2 + "4")
       : console.log(string);
   }
-
   function five() {
-    modifier == ""
+    modifier == "" && string.length < 11 && result == ""
       ? setCount(count + "5")
-      : modifier != "" && modifier2 == ""
+      : modifier != "" && string.length < 11 && result == ""
       ? setCount2(count2 + "5")
       : console.log(string);
   }
-
   function six() {
-    modifier == ""
+    modifier == "" && string.length < 11 && result == ""
       ? setCount(count + "6")
-      : modifier != "" && modifier2 == ""
+      : modifier != "" && string.length < 11 && result == ""
       ? setCount2(count2 + "6")
       : console.log(string);
   }
-
   function seven() {
-    modifier == ""
+    modifier == "" && string.length < 11 && result == ""
       ? setCount(count + "7")
-      : modifier != "" && modifier2 == ""
+      : modifier != "" && string.length < 11 && result == ""
       ? setCount2(count2 + "7")
       : console.log(string);
   }
-
   function eight() {
-    modifier == ""
+    modifier == "" && string.length < 11 && result == ""
       ? setCount(count + "8")
-      : modifier != "" && modifier2 == ""
+      : modifier != "" && string.length < 11 && result == ""
       ? setCount2(count2 + "8")
       : console.log(string);
   }
-
   function nine() {
-    modifier == ""
+    modifier == "" && string.length < 11 && result == ""
       ? setCount(count + "9")
-      : modifier != "" && modifier2 == ""
+      : modifier != "" && string.length < 11 && result == ""
       ? setCount2(count2 + "9")
       : console.log(string);
   }
@@ -171,36 +167,66 @@ function App() {
   function comma() {
     console.log(commaCount);
     count != "" ? setCommaCount(commaCount + 1) : console.log("");
-    commaCount < 1 && count != "" && modifier == ""
-      ? setCount(count + ",")
-      : modifier != "" && count2 !== "" && commaCount2 < 1 && modifier2 == ""
-      ? (setCount2(count2 + ","), setCommaCount2(commaCount2 + 1))
-      : console.log("too many commas");
+    commaCount < 1 && count != "" && modifier == "" && result == ""
+      ? setCount(count + ".")
+      : modifier != "" && count2 !== "" && commaCount2 < 1 && result == ""
+      ? (setCount2(count2 + "."), setCommaCount2(commaCount2 + 1))
+      : console.log("too much punctuation");
   }
 
   function equals() {
-    modifier == "+" && modifier2 != "="
-      ? (setModifier2(modifier2 + "="),
-        setResult((result = parseInt(count) + parseInt(count2))))
-      : modifier == "-" && modifier2 != "="
-      ? (setModifier2(modifier2 + "="),
-        setResult((result = parseInt(count) - parseInt(count2))))
-      : modifier == "x" && modifier2 != "="
-      ? (setModifier2(modifier2 + "="),
-        setResult((result = parseInt(count) * parseInt(count2))))
-      : modifier == "/" && modifier2 != "="
-      ? (setModifier2(modifier2 + "="),
-        setResult((result = parseInt(count) / parseInt(count2))))
-      : console.log(string);
+    modifier == "+"
+      ? setResult((result = parseFloat(count) + parseFloat(count2)))
+      : modifier == "-"
+      ? setResult((result = parseFloat(count) - parseFloat(count2)))
+      : modifier == "x"
+      ? setResult((result = parseFloat(count) * parseFloat(count2)))
+      : modifier == "/"
+      ? setResult((result = parseFloat(count) / parseFloat(count2)))
+      : console.log(count);
+    setResult(parseFloat(result.toFixed(6)));
+    setString("");
+  }
+
+  const [themeState, setThemeState] = useState("themeOne");
+  function themeThree() {
+    setThemeState("themeThree");
+  }
+  function themeTwo() {
+    setThemeState("themeTwo");
+  }
+  function themeOne() {
+    setThemeState("themeOne");
   }
   return (
     <>
+      <section className="header">
+        <button onClick={themeOne} className="button1">
+          <p>1</p>
+        </button>
+        <button onClick={themeTwo} className="button2">
+          <p>2</p>
+        </button>
+        <button onClick={themeThree} className="button3">
+          <p>3</p>
+        </button>
+        <div className="THEME">
+          <p>THEME</p>
+          <div className="space"></div>
+          <div className="slide">
+            <div className="dot"></div>
+          </div>
+        </div>
+      </section>
       <p>calc</p>
-      <div className="space"></div>
+      <div className="space3"></div>
       <div className="calcContainer">
         <div className="resultScreen">
-          <p>{string}</p>
+          <p>
+            {string} {result}
+          </p>
         </div>
+        <div className="space3"></div>
         <div className="space"></div>
         <div className="buttons">
           <button onClick={seven}>7</button>
@@ -217,7 +243,7 @@ function App() {
           <button onClick={two}>2</button>
           <button onClick={three}>3</button>
           <button onClick={subtract}>-</button>
-          <button onClick={comma}>,</button>
+          <button onClick={comma}>.</button>
           <button onClick={zero}>0</button>
           <button onClick={divide}>/</button>
           <button onClick={multiply}>x</button>
@@ -231,6 +257,9 @@ function App() {
           </div>
         </div>
       </div>
+      <style>{`
+        @import url("${themeState}.css");
+      `}</style>
     </>
   );
 }
