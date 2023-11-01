@@ -189,7 +189,7 @@ function App() {
     setString("");
   }
 
-  const [themeState, setThemeState] = useState("themeOne");
+  const [themeState, setThemeState] = useState("themeThree");
   function themeThree() {
     setThemeState("themeThree");
   }
